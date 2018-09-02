@@ -1,0 +1,14 @@
+{
+    "name": "5457",
+    "description": "A Discord bot coded in Discord.JS, hosted using Heroku.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "discord.js": "^11.4.2",
+      "enmap": "^3.1.1",
+      "fs": "0.0.1-security"
+    }
+  }
