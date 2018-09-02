@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
     //Users ID that can access this command
-    if(message.author.id !== '392419670915022848') {
+    if(message.author.id !== '392419670915022848', '466826989739835403') {
         //No Permission
               let error = new Discord.RichEmbed()
               .setAuthor("Error")
