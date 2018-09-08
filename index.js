@@ -21,7 +21,6 @@ fs.readdir("./commands/", (err, files) => {
   client.commands.set(commandName, props);
   });
 });
-
 client.on('message', message => require('./events/message.js')(client, message));
 
 client.login(process.env.TOKEN)

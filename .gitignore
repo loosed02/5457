@@ -1,2 +1,4 @@
+.*
+!/.gitignore
 .commands/
-./events
+.events/
