@@ -6,7 +6,7 @@ module.exports.run= async (client, message, args) => {
     .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
     .setColor("#87CEEB")
     .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```$announce <message>```")
-    .setFooter("Realeasing: Mid September", "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
+    .setFooter("Realeasing: September 15th", "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
     if (args.length < 1) return message.reply(Error);
     args = args.join(' ');
     const announcemnetEmbed = new Discord.RichEmbed()
