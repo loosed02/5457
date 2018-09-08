@@ -13,7 +13,7 @@ module.exports.run= async (client, message, args) => {
     .setAuthor(`Message by ${message.author.username}`, `${message.author.avatarURL}`)
     .setColor("#87CEEB")
     .setDescription(args) 
-    .setFooter("Realeasing: Mid September", "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
+    .setFooter("Realeasing: September 15th", "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
     message.delete().catch(O_o = {});
     message.channel.send(announcemnetEmbed);
 };
