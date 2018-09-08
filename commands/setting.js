@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 
 module.exports.run = async (client, message, args) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) {
     if(message.author.id !== '392419670915022848') {
     const Error = new Discord.RichEmbed()
     var serversettinglists = new db.table('setting12')
@@ -77,4 +76,4 @@ if(`${args[0]}` == `set`){
                 } 
         }
     }
-}
+
