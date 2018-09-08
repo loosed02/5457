@@ -1,4 +1,3 @@
-.*
-!/.gitignore
-.commands/
-.events/
+commands/
+events
+node_modules/
