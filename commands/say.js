@@ -14,7 +14,5 @@ exports.run = async (client, message, args) => {
               message.delete();
           }
         };
-    module.exports.help = {
-      name: "say"
-   }
+
     

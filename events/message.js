@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const prefix = require(`../settings/config.json`)
 const client = new Discord.Client();
+const db = require('quick.db');
 
 module.exports = (client, message) => {
         if (message.author.bot || !message.guild) return;
@@ -10,4 +11,7 @@ module.exports = (client, message) => {
         const cmd = client.commands.get(command);
         if (!cmd) return;
         cmd.run(client, message, args);
-    };
+
+    }
+
+    

@@ -2,10 +2,10 @@ const Discord = require('discord.js');
 const db = require('quick.db');
 
 module.exports.run = async (client, message, args) => {
-    if(message.author.id !== '392419670915022848') {
+    if(!message.member.hasPermission("ADMINISTRATOR")) {
     const Error = new Discord.RichEmbed()
     var serversettinglists = new db.table('setting12')
-    let messagess = await serversettinglists.get(`pFooterMessage${message.guild.id}`) 
+    let messagess = await serversettinglists.fetch(`pFooterMessage${message.guild.id}`) 
     .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
     .setColor("#87CEEB")
     .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```$announce <message>```")
@@ -22,7 +22,7 @@ if(`${args[0]}` == `set`){
             .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```$settings set channel #channel```")
                      if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(mentionEmbed) 
                      var serversettinglists = new db.table('setting12')
-                     let messagess = await serversettinglists.get(`pFooterMessage${message.guild.id}`) 
+                     let messagess = await serversettinglists.fetch(`pFooterMessage${message.guild.id}`) 
                      let mentionEmbed1 = new Discord.RichEmbed()
                      .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
                      .setColor("#87CEEB")
@@ -30,7 +30,7 @@ if(`${args[0]}` == `set`){
                      .setFooter(`${messagess}`, "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
                      if (!args[2]) return message.channel.send(mentionEmbed1)
                      if (!args.slice(2, 1000, args[2]).join(' ') === 'NONE') return message.channel.send(mentionEmbed) 
-                     const errorReport = client.channels.get(`474432463989637122`)
+                     const errorReport = client.channels.fetch(`474432463989637122`)
                      if (args.slice(2, 1000, args[2]).join(' ') === 'NONE') newMessage = '' 
                      else newMessage = args.slice(2, 1000, args[2]).join(' ') 
                      if(`${message.mentions.channels.first()}` == `undefined`) return
@@ -52,7 +52,7 @@ if(`${args[0]}` == `set`){
                     .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```$settings set footer <message>```")
                              if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(mentionEmbed) 
                              var serversettinglists = new db.table('setting12')
-                             let messagess = await serversettinglists.get(`pFooterMessage${message.guild.id}`) 
+                             let messagess = await serversettinglists.fetch(`pFooterMessage${message.guild.id}`) 
                              let mentionEmbed1 = new Discord.RichEmbed()
                              .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
                              .setColor("#87CEEB")
@@ -73,7 +73,36 @@ if(`${args[0]}` == `set`){
                             message.channel.send(channelEmbed) 
                             message.delete();     
                         }catch(err) {console.log(`Error with setting channel\n${err}`)}
-                } 
+                    } else if (`${args[1]}` == `guildMemberAdd`) {
+                        try {
+                            let mentionEmbed = new Discord.RichEmbed()
+                            .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
+                            .setColor("#87CEEB")
+                            .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```$settings set guildMemberAdd <on> or <off>```")
+                                     if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(mentionEmbed) 
+                                     var serversettinglists = new db.table('setting12')
+                                     let messagess = await serversettinglists.fetch(`pFooterMessage${message.guild.id}`) 
+                                     let mentionEmbed1 = new Discord.RichEmbed()
+                                     .setAuthor("Error","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
+                                     .setColor("#87CEEB")
+                                     .setDescription("Oops, there was an error while processing the command. Seems like you have forgotten something.\nUsage:```settings set guildMemberAdd <on> or <off>```")
+                                     .setFooter(`${messagess}`, "https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png");
+                                     if (!args[2]) return message.channel.send(mentionEmbed1)
+                                     if (!args.slice(2, 1000, args[2]).join(' ') === 'NONE') return message.channel.send(mentionEmbed) 
+                                     let memberjoin;
+                                     if (args.slice(2, 1000, args[2]).join(' ') === 'NONE') newMessage = '' 
+                                     else memberjoin = args.slice(2, 1000, args[2]).join(' ') 
+                                     let channelEmbed = new Discord.RichEmbed()
+                                     .setAuthor("Updating..","https://cdn.discordapp.com/attachments/478761922569961505/485623295618842625/h_iconnnnn64x64_by_katiefhk-dckc3ne.png")
+                                     .setColor("#87CEEB")
+                                     .addField("Update completed!", `New footer for announcement ${memberjoin}`)
+                                    // Update Channel
+                                    var serversettinglists = new db.table('setting13')
+                                    serversettinglists.set(`pguildMemberAdd${message.guild.id}`, memberjoin)
+                                    message.channel.send(channelEmbed) 
+                                    message.delete();     
+                                }catch(err) {console.log(`Error with setting channel\n${err}`)}
         }
     }
 
+} 
